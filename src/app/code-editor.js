@@ -15,7 +15,19 @@ export default function CodeEditor() {
         *      Handle incoming files
         *
         * */
+        if (typeof window !== "undefined" &&
+            "launchQueue" in window &&
+            "LaunchParams" in window &&
+            "files" in LaunchParams.prototype) {
+            launchQueue.setConsumer((launchParams) => {
+                if (!launchParams.files.length) return;
 
+                for (const f of launchParams.files) {
+                    console.log(f);
+                    handleFile(f);
+                }
+            });
+        }
         /* END ********* */
 
     }, []);
@@ -30,7 +42,25 @@ export default function CodeEditor() {
         *  @TODO 2.1
         *     Show file picker to select text files
         * */
+        try {
+            let f;
+            [f] = await window.showOpenFilePicker({
+                multiple: false,
+                excludeAcceptAllOption: true,
+                types: [
+                    {
+                        description: "Frontend development files",
+                        accept: {
+                            "text/*": [".html", ".css", ".js"]
+                        }
+                    }
+                ]
+            });
 
+            await handleFile(f);
+        } catch (error) {
+            console.log(error);
+        }
         /* END ********* */
     }
 
@@ -40,7 +70,16 @@ export default function CodeEditor() {
         *       - Get contents from file
         *       - Display contents in textarea
         * */
+        try {
+            const file = await f.getFile();
+            const contents = await file.text();
 
+            setFileName(file.name);
+            setFileContents(contents);
+            setFileHandle(f);
+        } catch (error) {
+            console.log(error);
+        }
         /* END ********* */
     }
 
@@ -49,7 +88,15 @@ export default function CodeEditor() {
         *  @TODO 2.2
         *      Save file back to disc
         * */
+        try {
+            const writable = await fileHandle.createWritable();
+            await writable.write(fileContents);
+            await writable.close();
 
+            closeFile();
+        } catch (error) {
+            console.log(error);
+        }
         /* END ********* */
     }
 
@@ -58,7 +105,9 @@ export default function CodeEditor() {
         *  @TODO 2.2
         *      Clear file variables
         * */
-
+        setFileName(null);
+        setFileContents(null);
+        setFileHandle(null);
         /* END ********* */
     }
 

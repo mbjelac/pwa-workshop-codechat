@@ -33,5 +33,25 @@
       "sizes": "800x480",
       "type": "image/png"
     }
+  ],
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "text/html": [".html"]
+      }
+    },
+    {
+      "action": "/",
+      "accept": {
+        "text/css": [".css"]
+      }
+    },
+    {
+      "action": "/",
+      "accept": {
+        "text/javascript": [".js"]
+      }
+    }
   ]
 }
