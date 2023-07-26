@@ -37,7 +37,7 @@ export default function SendNotificationForm() {
         *  @TODO 3.7
         *      Add your appUrl
         * */
-        const appUrl = "";
+        const appUrl = "https://sendnotification-j45qrjv6mq-uc.a.run.app";
         /* END ********* */
 
         const url = `${appUrl}?destination=${d}&from=${f}&message=${m}`;

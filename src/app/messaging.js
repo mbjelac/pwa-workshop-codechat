@@ -17,7 +17,7 @@ export default function Messaging() {
                 *    Call handleNotificationPermission, passing Notification.permission
                 *
                 * */
-
+                handleNotificationPermission(Notification.permission);
                 /* END ********* */
             });
 
@@ -42,6 +42,18 @@ export default function Messaging() {
             *    - Get `currentToken`, and save to localStorage
             *
             * */
+            getCurrentUserToken()
+                .then((currentToken) => {
+                    if (currentToken) {
+                        localStorage.setItem("currentUserToken", currentToken)
+                    } else {
+                        handleNotificationPermission("default");
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                    handleNotificationPermission("default");
+                })
 
             /* END ********* */
         } else {
@@ -55,7 +67,8 @@ export default function Messaging() {
         *  @TODO 3.3
         *     Request notification permission and handle result
         * */
-
+        const permission = await Notification.requestPermission();
+        handleNotificationPermission(permission);
         /* END ********* */
     }
 
@@ -68,7 +81,12 @@ export default function Messaging() {
                     *  @TODO 3.3
                     *      Add button to request notification permission (and fallback)
                     * */
-
+                    ((typeof window !== "undefined") && 'Notification' in window) ?
+                        <button className="button" onClick={() => requestNotificationPermission()}>
+                            Enable notifications
+                        </button>
+                        :
+                        <p>Unfortunately, your browser doesn't support push notifications :(</p>
                     /* END ********* */
                 }
             </div>
