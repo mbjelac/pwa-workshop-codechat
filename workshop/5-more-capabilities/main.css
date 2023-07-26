@@ -1,0 +1,21 @@
+/*
+*  @TODO 5.1.2
+*  		Add colours for a light theme
+* */
+
+:root[data-theme="light"] {
+    --color-bg: rgb(200, 200, 200);
+    --color-bg-lighter: rgb(220, 220, 220);
+    --color-border: rgb(180, 180, 180);
+    --color-text: rgb(24, 24, 24);
+}
+
+@media screen and (prefers-color-scheme: light) {
+    :root[data-theme="system"] {
+        --color-bg: rgb(200, 200, 200);
+        --color-bg-lighter: rgb(220, 220, 220);
+        --color-border: rgb(180, 180, 180);
+        --color-text: rgb(24, 24, 24);
+    }
+}
+/* END ********* */

@@ -1,0 +1,261 @@
+:root {
+    --color-primary: #D33257;
+    --spacing-x: 10px;
+
+    /* Default is a dark theme */
+    --color-bg: rgb(24, 24, 24);
+    --color-bg-lighter: rgb(44, 44, 44);
+    --color-border: rgb(54, 54, 54);
+    --color-text: rgb(200, 200, 200);
+}
+
+/*
+*  @TODO 5.1.2
+*  		Add colours for a light theme
+* */
+
+/* END ********* */
+
+
+/* Text *******************************/
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Nunito',sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    font-weight: 300;
+
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+.h2 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 1em;
+}
+
+.button {
+    background-color: var(--color-bg-lighter);
+    border: 0;
+    border-radius: 5px;
+    padding: 5px 7px;
+    color: var(--color-text);
+    line-height: 1;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.button--icon {
+    font-size: 1em;
+}
+
+.button--icon svg {
+    width: auto;
+    height: 1em;
+    max-width: 1em;
+}
+
+svg .fill {
+    fill: var(--color-text);
+}
+
+/* Site layout *******************************/
+
+#site--root {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+
+    grid-template-areas: "site-header"
+                         "site-main";
+    grid-template-columns: 1fr;
+}
+
+#site--header {
+    grid-area: site-header;
+    width: 100%;
+    height: 45px;
+    border-bottom: 1px solid var(--color-border);
+    padding: 10px var(--spacing-x);
+}
+
+#site--header img {
+    height: 100%;
+    width: auto;
+}
+
+#site--nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#site--main {
+    grid-area: site-main;
+    border-right: 1px solid var(--color-border);
+}
+
+#site--aside {
+    grid-area: site-aside;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg);
+
+    transform: translateY(100%);
+
+    transition: transform 1s;
+}
+
+#site--aside.open {
+    transform: translateY(0);
+
+}
+
+#site--aside--toggle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    transform: translate(-50%, -100%);
+}
+
+#site--aside.open #site--aside--toggle {
+    transform: translate(-50%, 100%);
+}
+
+@media (min-width: 900px) {
+
+    #site--root {
+        grid-template-areas: "site-header site-header"
+                             "site-main site-aside";
+        grid-template-columns: 1fr 300px;
+    }
+
+    #site--aside {
+        position: relative;
+        transform: translateY(0);
+    }
+
+    #site--aside--toggle {
+        display: none;
+    }
+
+}
+
+
+/* Utils *******************************/
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.full-height-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-right: var(--spacing-x);
+    padding-left: var(--spacing-x);
+}
+
+/* Editor *******************************/
+
+.editor {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+    color: #fff;
+}
+
+.editor--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editor--file-title {
+    background-color: var(--color-bg-lighter);
+    color: var(--color-text);
+    height: 45px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-right: var(--spacing-x);
+    padding-left: var(--spacing-x);
+
+    border-right: 1px solid var(--color-border);
+}
+
+.editor--actions {
+    display: flex;
+    justify-content: space-between;
+    padding-right: var(--spacing-x);
+    padding-left: var(--spacing-x);
+}
+
+.editor--actions > * {
+    margin-left: var(--spacing-x);
+}
+
+.editor--textarea {
+    width: 100%;
+    background-color: var(--color-bg-lighter);
+    color: var(--color-text);
+
+    border: none;
+    border-top: 1px solid var(--color-border);
+
+    padding: 15px var(--spacing-x);
+    font-family: monospace;
+}
+
+.editor--textarea:focus {
+    border-top-color: var(--color-primary);
+    outline: none;
+}
+
+
+/* Form *******************************/
+
+.form label {
+    display: block;
+}
+
+.form input {
+    display: block;
+
+    border: 1px solid var(--color-bg-lighter);
+    background-color: var(--color-bg-lighter);
+    color: var(--color-text);
+
+    padding: 5px var(--spacing-x);
+
+    margin-bottom: 15px;
+}
+
+.form input:focus {
+    border-top-color: var(--color-primary);
+    outline: none;
+}
+
+.form input[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

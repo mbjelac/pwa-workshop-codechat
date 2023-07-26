@@ -1,0 +1,7 @@
+node_modules
+/build
+/*.log
+/.idea
+
+/functions/node_modules
+/.firebase

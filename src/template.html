@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="system">
+	<head>
+		<meta charset="utf-8">
+		<title><% preact.title %></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="apple-touch-icon" href="<%= htmlWebpackPlugin.files.publicPath %>assets/icons/apple-touch-icon.png">
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+		<link rel="stylesheet" href="<%= htmlWebpackPlugin.files.publicPath %>assets/reset.css">
+		<link rel="stylesheet" href="<%= htmlWebpackPlugin.files.publicPath %>assets/main.css">
+
+		<meta name="description" content="An in-browser code editor and notifications messenger">
+		<link rel="apple-touch-icon" href="<%= htmlWebpackPlugin.files.publicPath %>assets/apple-touch-icon.png" sizes="180x180">
+		<link rel="mask-icon" href="<%= htmlWebpackPlugin.files.publicPath %>assets/mask-icon.svg" color="#FFFFFF">
+		<meta name="theme-color" content="#D33257">
+
+		<% preact.headEnd %>
+	</head>
+	<body>
+		<% preact.bodyEnd %>
+	</body>
+</html>

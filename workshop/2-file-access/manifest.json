@@ -1,0 +1,57 @@
+{
+  "name": "CodeChat",
+  "short_name": "CodeChat",
+  "start_url": "/",
+  "display": "standalone",
+  "description": "An in-browser code editor and notification messenger",
+  "orientation": "landscape-primary",
+  "background_color": "#181818",
+  "theme_color": "#D33257",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["productivity"],
+  "icons": [
+    {
+      "src": "/assets/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/screenshot-375x812.png",
+      "sizes": "375x812",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/screenshot-800x480.png",
+      "sizes": "800x480",
+      "type": "image/png"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "text/html": [".html"]
+      }
+    },
+    {
+      "action": "/",
+      "accept": {
+        "text/css": [".css"]
+      }
+    },
+    {
+      "action": "/",
+      "accept": {
+        "text/javascript": [".js"]
+      }
+    }
+  ]
+}
