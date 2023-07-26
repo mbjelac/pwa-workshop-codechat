@@ -9,7 +9,15 @@ import Share from "./app/share";
 *  @TODO 1.1
 *  		Register sw.js
 * */
-
+if (typeof window !== "undefined" && "serviceWorker" in navigator) {
+	navigator.serviceWorker.register("sw.js")
+		.then((reg) => {
+			console.log("Registered sw.js")
+		})
+		.catch((err) => {
+			console.log("Unable to register sw.js")
+		})
+}
 /* END ********* */
 
 export default function App() {
@@ -29,7 +37,7 @@ export default function App() {
 					<li><Share /></li>
 					<li><ColorThemeToggle /></li>
 					<li>
-						<a href="https://github.com/ireade/pwa-workshop-codechat" target="_blank">About</a>
+						<a href="https://github.com/ireade/pwa-workshop-codechat">About</a>
 					</li>
 				</ul>
 			</header>

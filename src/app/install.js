@@ -15,7 +15,8 @@ export default function Install() {
                 *  @TODO 1.3
                 *      Save event to "installPrompt"
                 * */
-
+                setInstallPrompt(event);
+                setShowInstallButton(true);
                 /* END ********* */
             });
 
@@ -24,7 +25,8 @@ export default function Install() {
                 *  @TODO 1.3
                 *      Set "installPrompt" and "showInstallButton" to null
                 * */
-
+                setInstallPrompt(null);
+                setShowInstallButton(false);
                 /* END ********* */
             });
 
@@ -38,7 +40,12 @@ export default function Install() {
         *       - Get outcome
         *       - If outcome is accepted, hide install button
         * */
+        installPrompt.prompt();
+        const { outcome } = await installPrompt.userChoice;
 
+        if (outcome === "accepted") {
+            setShowInstallButton(false)
+        }
         /* END ********* */
 
         setInstallPrompt(null);
