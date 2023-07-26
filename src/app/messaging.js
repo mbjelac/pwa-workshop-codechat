@@ -26,7 +26,8 @@ export default function Messaging() {
             *    Listen on offline and online events and call setIsOffline()
             *
             * */
-
+            window.addEventListener("offline", () => setIsOffline(true));
+            window.addEventListener("online", () => setIsOffline(false));
             /* END ********* */
         }
     }, []);
@@ -104,7 +105,10 @@ export default function Messaging() {
                     *    Show <SendNotificationForm /> if online and add fallback if not
                     *
                     * */
-                    <SendNotificationForm />
+                    isOffline ?
+                        <p>Looks like you're offline!</p>
+                        :
+                        <SendNotificationForm />
                     /* END ********* */
                 }
             </div>
